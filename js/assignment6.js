@@ -21,11 +21,12 @@ $(document).ready(function () {
   }
 
   // Tasks 1–3: live filtering, autocomplete suggestions, and safe highlighting.
-  const $cards = $('.a6-search-item');
+  const $cards = $('.dinosaur-cards article.card');
   const $search = $('#a6-search');
   const $suggestions = $('#a6-suggestions');
+  const catalogueSearch = document.getElementById('a5-search');
   const names = $cards.map(function () { return $(this).find('h3').first().text().trim(); }).get();
-  const originals = $('.a6-highlight').map(function () {
+  const originals = $cards.find('h3, .tag, .card-body > p:not(.a5-extra)').map(function () {
     return {element: this, text: $(this).text()};
   }).get();
   function escapeRegex(value) { return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
@@ -44,28 +45,36 @@ $(document).ready(function () {
       $el.append(document.createTextNode(entry.text.slice(from)));
     });
   }
-  function runSearch() {
+  function updateQuickFinder() {
     const query = $.trim($search.val()).toLowerCase();
-    let count = 0;
-    $cards.each(function () {
-      const haystack = ($(this).attr('data-search') || '') + ' ' + $(this).find('h3').first().text();
-      const visible = haystack.toLowerCase().includes(query);
-      $(this).toggle(visible);
-      if (visible) count++;
-    });
+    const visibleCards = $cards.filter(function () { return !this.hidden; });
     markMatches(query);
-    $('#a6-search-count').text(query ? count + ' matching dinosaur(s)' : 'Showing all ' + count + ' dinosaurs');
+    $('#a6-search-count').text(query ? visibleCards.length + ' matching dinosaur(s)' : 'Showing ' + visibleCards.length + ' dinosaurs');
     const matched = query ? names.filter(name => name.toLowerCase().includes(query)).slice(0, 6) : [];
     $suggestions.empty();
     matched.forEach(name => $('<li role="option"><button type="button"></button></li>').find('button').text(name).end().appendTo($suggestions));
     $suggestions.prop('hidden', matched.length === 0);
     $search.attr('aria-expanded', String(matched.length > 0));
   }
-  $search.on('input keyup', runSearch);
-  $suggestions.on('click', 'button', function () {
-    $search.val($(this).text()); runSearch();
-    $suggestions.prop('hidden', true); $search.attr('aria-expanded', 'false').trigger('focus');
-  });
+  function searchCatalogue() {
+    catalogueSearch.value = $search.val();
+    catalogueSearch.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  if ($search.length && catalogueSearch) {
+    $search.on('input', searchCatalogue);
+    catalogueSearch.addEventListener('input', () => {
+      $search.val(catalogueSearch.value);
+      updateQuickFinder();
+    });
+    $('.a5-filter').on('click', updateQuickFinder);
+    $suggestions.on('click', 'button', function () {
+      $search.val($(this).text());
+      searchCatalogue();
+      $suggestions.prop('hidden', true);
+      $search.attr('aria-expanded', 'false').trigger('focus');
+    });
+    updateQuickFinder();
+  }
   $search.on('keydown', function (event) {
     if (event.key === 'Escape') { $suggestions.prop('hidden', true); $search.attr('aria-expanded', 'false'); }
     if (event.key === 'ArrowDown' && !$suggestions.prop('hidden')) { event.preventDefault(); $suggestions.find('button').first().trigger('focus'); }
@@ -73,7 +82,6 @@ $(document).ready(function () {
   $suggestions.on('keydown', 'button', function (event) {
     if (event.key === 'Escape') { $suggestions.prop('hidden', true); $search.trigger('focus'); }
   });
-  if ($cards.length) runSearch();
 
   // Task 5: count up once when stats enter the viewport.
   function countUp($element) {
@@ -103,9 +111,7 @@ $(document).ready(function () {
     const $form = $(this);
     const $button = $form.find('.a6-submit');
     if ($button.prop('disabled')) { event.preventDefault(); return; }
-    const name = $.trim($form.find('[name="name"]').val() || $form.find('input').first().val() || '');
-    const email = $.trim($form.find('[name="email"]').val() || $form.find('input[type="email"]').val() || '');
-    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    if (!$form.find('#a4-contact-status').hasClass('a4-success')) return;
     const original = $button.attr('data-original-text') || 'Submit';
     $button.prop('disabled', true).html('<span class="a6-spinner" aria-hidden="true"></span> Please wait…');
     setTimeout(function () {

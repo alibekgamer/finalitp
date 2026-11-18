@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errors = {};
     if (!emailValid(email)) errors.email = 'Enter a valid email address.';
     if (!password) errors.password = 'Enter your password.';
+    else if (!passwordValid(password)) errors.password = 'Use 8+ characters, uppercase, lowercase, number and symbol.';
     if (!showErrors(login, errors)) return status(login, 'Please correct the highlighted fields.', false);
     const user = getUser();
     if (!user || user.email !== email || user.password !== password) return status(login, 'Email or password is incorrect. Create an account first.', false);

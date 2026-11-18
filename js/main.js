@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   contactForm?.addEventListener('submit', event => {
     event.preventDefault();
     const ok = validate(contactForm, {
-      name: required('Name'), email: emailRule, phone: value => /^\+?[0-9 ()-]{10,20}$/.test(value) && value.replace(/\D/g, '').length >= 10 ? '' : 'Enter a valid phone number (10–15 digits).', message: required('Message')
+      name: required('Name'), email: emailRule, phone: value => /^\+?[\d\s()-]+$/.test(value) && /^\d{10,15}$/.test(value.replace(/\D/g, '')) ? '' : 'Enter a valid phone number (10–15 digits).', message: required('Message')
     });
     const status = document.getElementById('a4-contact-status');
     status.textContent = ok ? 'Your message passed validation! This is a demo; no message was sent.' : 'Please correct the highlighted fields.';
