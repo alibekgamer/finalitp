@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>
+   Discovery Lab | DinoWorld
+  </title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<style>.chrome-dino-embed{border:1px solid #cbd5c9;border-radius:14px;overflow:hidden;background:#fff;min-height:310px}.chrome-dino-embed iframe{display:block;width:100%;height:340px;border:0;background:#fff}@media(max-width:600px){.chrome-dino-embed iframe{height:300px}}</style><style>
+/* High-detail external fossil scans: responsive viewer without stretching */
+.fossil-stage{position:relative;overflow:hidden;min-width:0;min-height:0!important}
+#fossil-scan-frame{display:block;width:100%;height:clamp(320px,43vw,530px);min-height:0;border:0;border-radius:12px;background:#151b19}
+@media(max-width:800px){#fossil-scan-frame{height:clamp(300px,70vw,450px)}}
+@media(max-width:480px){#fossil-scan-frame{height:330px}}
+.fossil-stage .fossil-hint,.fossil-stage #fossil-status{pointer-events:none}
+</style></head>
+<body>
+<header class="site-header">
+<nav aria-label="Main navigation" class="navbar navbar-expand-lg dino-navbar">
+<div class="container">
+<a class="navbar-brand brand" href="index.html">
+<span aria-hidden="true" class="brand-mark">
+       🦖
+      </span>
+      DinoWorld
+     </a>
+<button aria-controls="dinoNavigation" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#dinoNavigation" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon">
+</span>
+</button>
+<div class="collapse navbar-collapse" id="dinoNavigation">
+<ul aria-label="Main pages" class="navbar-nav mx-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="index.html">
+         Home
+        </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="dinosaurs.html">
+         Dinosaurs
+        </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="timeline.html">
+         Timeline
+        </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="gallery.html">
+         Gallery
+        </a>
+</li>
+<li class="nav-item">
+<a aria-current="page" class="nav-link active" href="about.html">
+         About
+        </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="discovery.html">
+         Discovery Lab
+        </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="profile.html">
+         Profile
+        </a>
+</li>
+</ul>
+<a class="dino-signup-link" href="account.html">
+       Log In / Sign Up
+      </a>
+<a class="btn btn-success dino-btn nav-visit" href="museum.html">
+       Visit Museum →
+      </a>
+</div>
+</div>
+</nav>
+</header>
+<div class="a4-tools">
+<div class="container a4-tools-inner">
+<div aria-live="off" class="a4-clock">
+     🕒
+     <span id="a4-clock">
+      Loading date and time...
+     </span>
+</div>
+<div class="a4-tools-actions">
+<button class="a4-button" id="a4-color-button" type="button">
+      🎨 Change background
+     </button>
+<button class="a4-button" id="a4-open-popup" type="button">
+      ✉ Subscribe
+     </button>
+<button aria-pressed="false" class="a5-theme-button a4-button" type="button">
+      🌙 Night mode
+     </button>
+</div>
+</div>
+</div>
+<main>
+<section class="section final-intro">
+<div class="container">
+<div class="eyebrow">
+      INTERACTIVE DISCOVERY LAB
+     </div>
+<h1>
+      Explore prehistoric life
+     </h1>
+<p>Explore our interactive 3D fossil museum, investigate real scientific records through the GBIF API, and play the original Chrome Dino game.</p>
+<div class="final-panel fossil-museum" id="fossil-museum"><div class="fossil-heading"><div><div class="eyebrow">VIRTUAL EXHIBITION</div><h2>3D Fossil Museum <span class="final-pill">Interactive exhibit</span></h2><p>Explore real 3D scans of fossil specimens. Drag to rotate and scroll to zoom. These are actual 3D meshes, not photographs or cartoon reconstructions.</p></div></div><div aria-label="Choose a fossil" class="fossil-picker" role="group"><button aria-pressed="true" class="fossil-choice active" data-fossil="trex" type="button">T. rex skull</button><button aria-pressed="false" class="fossil-choice" data-fossil="triceratops" type="button">Triceratops skull</button><button aria-pressed="false" class="fossil-choice" data-fossil="stegosaurus" type="button">Stegosaurus skeleton</button></div><div class="fossil-layout"><div class="fossil-stage"><iframe allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen="" id="fossil-scan-frame" loading="lazy" src="https://sketchfab.com/models/cf48487de55d454b8adc92dce2840a0d/embed?autostart=0&amp;ui_infos=0&amp;ui_controls=1&amp;ui_watermark=1" title="Interactive 3D scan of Tyrannosaurus rex skull"></iframe><div class="fossil-hint">↔ Drag to rotate · Scroll to zoom · Real 3D scanned geometry</div><div aria-live="polite" id="fossil-status" role="status">Museum scan · hosted by Sketchfab</div></div><div class="fossil-info"><div class="eyebrow">ON DISPLAY</div><h3 id="fossil-name">Tyrannosaurus rex</h3><p id="fossil-description">Detailed 3D scan of a T. rex skull cast from the Museum of the Earth, Ithaca, New York.</p><dl><dt>Geological period</dt><dd id="fossil-period">Late Cretaceous</dd><dt>Exhibit type</dt><dd>Museum scan / reconstructed fossil specimen</dd></dl><div class="fossil-actions"></div><div class="fossil-live-wrap"><div class="eyebrow">LIVE SCIENTIFIC DATA · GBIF API</div><div aria-live="polite" class="fossil-live-data" id="fossil-live-data">Loading scientific classification…</div></div><p class="small">These 3D exhibits are hosted on Sketchfab. The scientific classification is fetched separately from GBIF. Internet access is required.</p><p class="small fossil-source-line">3D model source: <a href="https://sketchfab.com/3d-models/vertebrate-tyrannosaurus-rex-skull-mote-cf48487de55d454b8adc92dce2840a0d" id="fossil-model-source" rel="noopener noreferrer" target="_blank">Digital Atlas of Ancient Life · CC0</a></p></div></div></div><div class="final-panel">
+<h2>
+       Live species lookup
+       <span class="final-pill">
+        GBIF API
+       </span>
+</h2>
+<p>
+       Information is fetched from the Global Biodiversity Information Facility (GBIF). Some extinct taxa may not have a matching record.
+      </p>
+<form class="final-api-form" id="final-api-form" novalidate="">
+<label for="final-species">
+        Scientific name
+       </label>
+<select id="final-species" name="species">
+<option value="Tyrannosaurus rex">
+         Tyrannosaurus rex
+        </option>
+<option value="Triceratops horridus">
+         Triceratops horridus
+        </option>
+<option value="Stegosaurus stenops">
+         Stegosaurus stenops
+        </option>
+<option value="Velociraptor mongoliensis">
+         Velociraptor mongoliensis
+        </option>
+<option value="Spinosaurus aegyptiacus">
+         Spinosaurus aegyptiacus
+        </option>
+<option value="Brachiosaurus altithorax">
+         Brachiosaurus altithorax
+        </option>
+</select>
+<button class="btn btn-success dino-btn" type="submit">
+        Search live data
+       </button>
+</form>
+<div aria-live="polite" class="final-api-result" id="final-api-result" role="status">
+       Choose a dinosaur and click Search live data.
+      </div>
+<p class="small">
+       Source:
+       <a href="https://www.gbif.org/" rel="noopener noreferrer" target="_blank">
+        GBIF
+       </a>
+       . Data availability depends on the external service.
+      </p>
+</div>
+<div class="final-panel final-game-panel"><h2>Chrome Dino <span class="final-pill">Original Chromium game</span></h2>
+<p>Play the classic Chrome offline dinosaur game right here. Press Space or ↑ to jump, ↓ to duck. On mobile, tap the game area.</p>
+<div class="chrome-dino-embed"><iframe allow="autoplay" loading="lazy" referrerpolicy="no-referrer" src="https://typeling1578.github.io/dino-game/" tabindex="0" title="Original Chrome Dino game"></iframe></div>
+<p class="small">The original Chromium game is served from an independently hosted extraction. Internet access is required. If the embedded game does not load, <a href="https://typeling1578.github.io/dino-game/" rel="noopener noreferrer" target="_blank">open the game in a new tab</a>.</p>
+<p class="small">Game source: <a href="https://github.com/typeling1578/dino-game" rel="noopener noreferrer" target="_blank">Chromium Dino extraction</a> (MPL-2.0). Original game © Chromium Authors; Chromium source is BSD-licensed. This embedded game is not the site's external scientific API; GBIF remains integrated separately.</p></div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<div>
+<a class="brand" href="index.html">
+       🦖 DinoWorld
+      </a>
+<p>
+       Discover the extraordinary story of prehistoric life.
+      </p>
+</div>
+<div class="footer-links">
+<a href="dinosaurs.html">
+       Dinosaurs
+      </a>
+<a href="timeline.html">
+       Timeline
+      </a>
+<a href="gallery.html">
+       Gallery
+      </a>
+<a href="about.html">
+       About
+      </a>
+<a href="museum.html">
+       Museum
+      </a>
+</div>
+</div>
+<div class="footer-bottom">
+     © 2026 DinoWorld · Educational project · Developed by Askar Alibek
+    </div>
+</div>
+</footer>
+<div class="a4-overlay" hidden="" id="a4-overlay">
+<div aria-labelledby="a4-dialog-title" aria-modal="true" class="a4-dialog" role="dialog">
+<button aria-label="Close popup" class="a4-close" id="a4-close-popup" type="button">
+     ×
+    </button>
+<div class="eyebrow">
+     DinoWorld newsletter
+    </div>
+<h2 id="a4-dialog-title">
+     Stay curious
+    </h2>
+<p>
+     Get prehistoric discoveries in your inbox (demo form).
+    </p>
+<form id="a4-subscribe-form" novalidate="">
+<label for="a4-subscribe-email">
+      Email address
+     </label>
+<input aria-describedby="a4-subscribe-error" autocomplete="email" id="a4-subscribe-email" name="email" type="text"/>
+<span class="a4-error" data-error-for="email" id="a4-subscribe-error">
+</span>
+<button class="a4-button" type="submit">
+      Subscribe
+     </button>
+<p aria-live="polite" id="a4-subscribe-status" role="status">
+</p>
+</form>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+<script defer="" src="js/main.js">
+</script>
+<script defer="" src="js/assignment6.js">
+</script>
+<script defer="" src="js/final.js">
+</script><script defer="" src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script><script defer="" src="js/fossil-scans.js"></script>
+<div aria-live="polite" id="a6-toast" role="status">
+</div>
+</body>
+</html>

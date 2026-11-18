@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="DinoWorld: discover dinosaurs, fossils and prehistoric life." name="description"/>
+  <title>
+   Timeline | DinoWorld
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+ </head>
+ <body>
+  <div aria-label="Page scroll progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" id="a6-progress" role="progressbar">
+  </div>
+  <header class="site-header">
+   <nav aria-label="Main navigation" class="navbar navbar-expand-lg dino-navbar">
+    <div class="container">
+     <a class="navbar-brand brand" href="index.html">
+      <span aria-hidden="true" class="brand-mark">
+       🦖
+      </span>
+      DinoWorld
+     </a>
+     <button aria-controls="dinoNavigation" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#dinoNavigation" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon">
+      </span>
+     </button>
+     <div class="collapse navbar-collapse" id="dinoNavigation">
+      <ul aria-label="Main pages" class="navbar-nav mx-auto mb-2 mb-lg-0">
+       <li class="nav-item">
+        <a class="nav-link" href="index.html">
+         Home
+        </a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="dinosaurs.html">
+         Dinosaurs
+        </a>
+       </li>
+       <li class="nav-item">
+        <a aria-current="page" class="nav-link active" href="timeline.html">
+         Timeline
+        </a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="gallery.html">
+         Gallery
+        </a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="about.html">
+         About
+        </a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="discovery.html">
+         Discovery Lab
+        </a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="profile.html">
+         Profile
+        </a>
+       </li>
+      </ul>
+      <a class="dino-signup-link" href="account.html">
+       Log In / Sign Up
+      </a>
+      <a class="btn btn-success dino-btn nav-visit" href="museum.html">
+       Visit Museum →
+      </a>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="a4-tools">
+   <div class="container a4-tools-inner">
+    <div aria-live="off" class="a4-clock">
+     🕒
+     <span id="a4-clock">
+      Loading date and time...
+     </span>
+    </div>
+    <div class="a4-tools-actions">
+     <button class="a4-button" id="a4-color-button" type="button">
+      🎨 Change background
+     </button>
+     <button class="a4-button" id="a4-open-popup" type="button">
+      ✉ Subscribe
+     </button>
+     <button aria-pressed="false" class="a5-theme-button a4-button" type="button">
+      🌙 Night mode
+     </button>
+    </div>
+   </div>
+  </div>
+  <main>
+   <section class="page-intro">
+    <div class="container">
+     <div class="eyebrow">
+      Journey through time
+     </div>
+     <h1>
+      Geological Timeline
+     </h1>
+     <p>
+      Discover the three major periods of the Mesozoic Era, the age of dinosaurs.
+     </p>
+    </div>
+   </section>
+   <section class="section">
+    <div class="container">
+     <div class="grid">
+      <article class="card period">
+       <img alt="Prehistoric landscape from the Triassic Period" src="images/triassic.jpg"/>
+       <div class="card-body">
+        <span class="tag">
+         252–201 million years ago
+        </span>
+        <h3 id="triassic">
+         Triassic Period
+        </h3>
+        <p>
+         The earliest dinosaurs appeared and began to diversify on the supercontinent Pangaea.
+        </p>
+       </div>
+      </article>
+      <article class="card period">
+       <img alt="Prehistoric landscape from the Jurassic Period" class="a6-lazy" data-src="images/jurassic.jpg" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/>
+       <div class="card-body">
+        <span class="tag">
+         201–145 million years ago
+        </span>
+        <h3 id="jurassic">
+         Jurassic Period
+        </h3>
+        <p>
+         Giant sauropods and other dinosaurs flourished as the continents began to separate.
+        </p>
+       </div>
+      </article>
+      <article class="card period">
+       <img alt="Prehistoric landscape from the Cretaceous Period" class="a6-lazy" data-src="images/cretaceous.jpg" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/>
+       <div class="card-body">
+        <span class="tag">
+         145–66 million years ago
+        </span>
+        <h3 id="cretaceous">
+         Cretaceous Period
+        </h3>
+        <p>
+         Many famous dinosaur groups evolved before the mass extinction at the end of the period.
+        </p>
+       </div>
+      </article>
+     </div>
+     <h2 style="margin-top:60px">
+      Mesozoic Periods at a Glance
+     </h2>
+     <div class="table-wrap">
+      <table>
+       <thead>
+        <tr>
+         <th>
+          Period
+         </th>
+         <th>
+          Approximate dates
+         </th>
+         <th>
+          Key events
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Triassic
+         </td>
+         <td>
+          252–201 million years ago
+         </td>
+         <td>
+          The earliest dinosaurs appeared and began to diversify on the supercontinent Pangaea.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Jurassic
+         </td>
+         <td>
+          201–145 million years ago
+         </td>
+         <td>
+          Giant sauropods and other dinosaurs flourished as the continents began to separate.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Cretaceous
+         </td>
+         <td>
+          145–66 million years ago
+         </td>
+         <td>
+          Many famous dinosaur groups evolved before the mass extinction at the end of the period.
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </section>
+  </main>
+  <div class="a4-overlay" hidden="" id="a4-overlay">
+   <div aria-labelledby="a4-dialog-title" aria-modal="true" class="a4-dialog" role="dialog">
+    <button aria-label="Close popup" class="a4-close" id="a4-close-popup" type="button">
+     ×
+    </button>
+    <div class="eyebrow">
+     DinoWorld newsletter
+    </div>
+    <h2 id="a4-dialog-title">
+     Stay curious
+    </h2>
+    <p>
+     Get prehistoric discoveries in your inbox (demo form).
+    </p>
+    <form id="a4-subscribe-form" novalidate="">
+     <label for="a4-subscribe-email">
+      Email address
+     </label>
+     <input aria-describedby="a4-subscribe-error" autocomplete="email" id="a4-subscribe-email" name="email" type="text"/>
+     <span class="a4-error" data-error-for="email" id="a4-subscribe-error">
+     </span>
+     <button class="a4-button" type="submit">
+      Subscribe
+     </button>
+     <p aria-live="polite" id="a4-subscribe-status" role="status">
+     </p>
+    </form>
+   </div>
+  </div>
+  <footer class="footer">
+   <div class="container">
+    <div class="footer-inner">
+     <div>
+      <a class="brand" href="index.html">
+       🦖 DinoWorld
+      </a>
+      <p>
+       Discover the extraordinary story of prehistoric life.
+      </p>
+     </div>
+     <div class="footer-links">
+      <a href="dinosaurs.html">
+       Dinosaurs
+      </a>
+      <a href="timeline.html">
+       Timeline
+      </a>
+      <a href="gallery.html">
+       Gallery
+      </a>
+      <a href="about.html">
+       About
+      </a>
+      <a href="museum.html">
+       Museum
+      </a>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     © 2026 DinoWorld · Educational project · Developed by Askar Alibek
+    </div>
+   </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script defer="" src="js/main.js">
+  </script>
+  <script defer="True" src="js/assignment6.js">
+  </script>
+  <div aria-live="polite" id="a6-toast" role="status">
+  </div>
+  <script defer="True" src="js/final.js">
+  </script>
+ </body>
+</html>
